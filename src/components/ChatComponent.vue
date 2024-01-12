@@ -25,13 +25,13 @@ export default {
   },
   mounted() {
     this.socket = io('http://localhost:3000');
-    this.socket.on('chat message', msg => {
+    this.socket.on('receive message', (msg) => {
       this.messages.push(msg);
     });
   },
   methods: {
     sendMessage() {
-      this.socket.emit('chat message', this.message);
+      this.socket.emit('send message', this.message);
       this.message = '';
     }
   }
